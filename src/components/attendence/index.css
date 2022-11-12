@@ -1,0 +1,51 @@
+.main {
+border: 3px solid black;
+/* display: flex; */
+margin-top: 60px;
+justify-content: center;
+width: 600px;
+padding: 10px;
+box-shadow: 10px 1px 30px 10px  #888888;
+/* box-shadow: 5px 5px blue, 10px 10px red, 15px 15px green; */
+
+margin-left: 350px;
+
+}
+.nameImage{
+    display: flex;
+        margin: 10px;
+}
+.Name{
+    margin-top: 110px;
+    margin-right: 250px;
+ /* margin: 10px; */
+    
+}
+
+.Name>div>span{
+    padding: 3px;
+}
+.Name>div>span{
+    padding: 3px;
+}
+.cnic{
+display: flex;
+margin-top: 20px;
+}
+.cnic>div{
+    margin: 10px;
+}
+.cnic>div>span{
+    padding: 3px;
+}
+.cnic1>div{
+    margin: 10px;
+}
+.cnic1>div>span{
+    padding: 3px;
+}
+.cnic1{
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+}
