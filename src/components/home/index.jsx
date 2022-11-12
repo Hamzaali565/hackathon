@@ -2,6 +2,8 @@ import { initializeApp } from "firebase/app";
 import { getFirestore, collection, addDoc, doc, onSnapshot } from "firebase/firestore";
 import { useState } from "react";
 import Form from 'react-bootstrap/Form';
+import axios from "axios";
+
 
 
 const firebaseConfig = {
@@ -35,10 +37,32 @@ const Home = () => {
     const [teacher, setTeacher] = useState("")
     const [section, setSection] = useState("")
     const [batch, setBatch] = useState("")
+    const [pict, setPict] = useState(null)
+
 
 
     const formHandler = async (e) => {
         e.preventDefault();
+        
+        const cloudinaryData = new FormData();
+        cloudinaryData.append("file", pict);
+        cloudinaryData.append("upload_preset", "postingApp");
+        cloudinaryData.append("cloud_name", "dozqa9pai");
+        // console.log(cloudinaryData);
+        axios.post(`https://api.cloudinary.com/v1_1/dozqa9pai/image/upload`,
+            cloudinaryData,
+            {
+                headers: { 'Content-Type': 'multipart/form-data' }
+
+            })
+            .then(async res => {
+
+                console.log("from then", res.data);
+            
+        
+        
+        
+        
         try {
             const docRef = await addDoc(collection(db, roll), {
                 name: name,
@@ -53,12 +77,13 @@ const Home = () => {
                 Teacher_Name: teacher,
                 Section_Name: section,
                 Batch_No: batch, 
+                pic: res?.data?.url
             });
             console.log("Document written with ID: ", docRef.id);
         } catch (e) {
             console.error("Error adding document: ", e);
         }
-
+    })
     }
 
 
@@ -148,6 +173,15 @@ const Home = () => {
                 <Form.Control
                     type="text"
                     onChange={(e) => { setBatch(e.target.value) }}
+                    id="inputPassword5"
+                    aria-describedby="passwordHelpBlock"
+                />
+                <Form.Label htmlFor="inputPassword5">Upload Photo</Form.Label>
+                <Form.Control
+                    type="file"
+                    onChange={(e) => {
+                        setPict(e.currentTarget.files[0])
+                    }} 
                     id="inputPassword5"
                     aria-describedby="passwordHelpBlock"
                 />

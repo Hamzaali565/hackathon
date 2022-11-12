@@ -17,7 +17,7 @@ margin-left: 350px;
 }
 .Name{
     margin-top: 110px;
-    margin-right: 250px;
+    margin-right: 200px;
  /* margin: 10px; */
     
 }
@@ -48,4 +48,15 @@ margin-top: 20px;
     display: flex;
     margin-top: 20px;
     justify-content: center;
+}
+.buttonsGroup{
+    display: flex;
+    justify-content: center;
+}
+.buttonsGroup>.butt4{
+   margin: 5px;
+   padding: 7px;
+   border-radius: 10px;
+   
+
 }
