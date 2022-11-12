@@ -105,7 +105,7 @@ const Attendence = () => {
     }
 
     const present = () => {
-        console.log("your presence has been added");
+        alert("your presence has been added");
     }
     const absent = () => {
         let person = prompt("Password is admin",)
@@ -116,7 +116,7 @@ const Attendence = () => {
         ;
     }
     const late = () => {
-        console.log("your late attendence has been added");
+        alert("your late attendence has been added");
     }
     const leave = () => {
         // console.log("your presence has been added");
