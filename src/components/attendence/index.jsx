@@ -125,34 +125,42 @@ const Attendence = () => {
         let person = prompt("please enter password",)
         let password = "admin";
         (person === password) ? alert('Leave Added')
-            :
-            alert("You Have no access to it");
+        :
+        alert("You Have no access to it");
         ;
-
+        
     }
-
+    
     const deletePost = async (takeId) => {
-        await deleteDoc(doc(db, roll, takeId));
+        let person = prompt("please enter password",)
+        let password = "admin";
+        (person === password) ? 
+        await deleteDoc(doc(db, roll, takeId))
+        :
+        alert("You Have no access to it");
+        ;
     }
-
+    
     const updatePost = async (e) => {
         e.preventDefault();
-
+        
         // Set the "capital" field of the city 'DC'
+    
         await updateDoc(doc(db, roll, isEditing), {
             Lab: Lab,
             Teacher_Name: Teacher,
             Section_Name: Section,
             Class_Timming: Timing
-
+            
         });
         setEditing(null);
         setTeacher("");
         setSection("");
         setTiming("");
         
-    };
-
+    }
+    
+    
     return (
         <div>
             <form onSubmit={SubmitFormHandler}>
