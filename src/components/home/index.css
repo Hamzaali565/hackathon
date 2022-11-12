@@ -1,0 +1,50 @@
+h1 {
+    display: flex;
+    justify-content: center;
+}
+
+.firstThree {
+    display: flex;
+    justify-content: center;
+}
+
+.firstThree>input {
+    margin-left: 10px;
+    margin-top: 30px;
+    padding: 10px;
+}
+
+.firstThree>label {
+    margin-left: 10px;
+    margin-top: 30px;
+}
+
+.buut {
+    margin-top: 30px;
+
+    display: flex;
+    justify-content: center;
+}
+
+.buut>button {
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid black;
+}
+
+.buut>button:hover {
+    color: antiquewhite;
+    background-color: black;
+}
+.mainomain>.main1{
+    border: 3px solid black;
+    width: 850px;
+    padding: 10px;
+    box-shadow: 10px 1px 30px 10px  #888888;
+
+}
+.mainomain{
+margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}

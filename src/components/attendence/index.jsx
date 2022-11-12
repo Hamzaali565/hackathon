@@ -11,7 +11,6 @@ import Button from 'react-bootstrap/Button';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-
 const firebaseConfig = {
     apiKey: "AIzaSyAuoAhY0akZEx3zTDcjLYcYfNSfrk52T5M",
     authDomain: "hackathone-75dc2.firebaseapp.com",
@@ -109,7 +108,7 @@ const Attendence = () => {
         console.log("your presence has been added");
     }
     const absent = () => {
-        let person = prompt("please enter password",)
+        let person = prompt("Password is admin",)
         let password = "admin";
         (person === password) ? alert('Absent Added')
             :
@@ -122,7 +121,7 @@ const Attendence = () => {
     const leave = () => {
         // console.log("your presence has been added");
 
-        let person = prompt("please enter password",)
+        let person = prompt("Password is admin",)
         let password = "admin";
         (person === password) ? alert('Leave Added')
         :
@@ -132,7 +131,7 @@ const Attendence = () => {
     }
     
     const deletePost = async (takeId) => {
-        let person = prompt("please enter password",)
+        let person = prompt("Password is admin",)
         let password = "admin";
         (person === password) ? 
         await deleteDoc(doc(db, roll, takeId))
@@ -164,6 +163,7 @@ const Attendence = () => {
     return (
         <div>
             <form onSubmit={SubmitFormHandler}>
+                <div className="Inp">
                 <Form.Label htmlFor="inputPassword5">Roll Number</Form.Label>
                 <Form.Control
                     type="number"
@@ -172,10 +172,13 @@ const Attendence = () => {
                     id="inputPassword5"
                     aria-describedby="passwordHelpBlock"
                 />
+                </div>
                 {/* <input type="text"  name="" id="" /> */}
-                <button type="submit">Enter</button>
-            </form>
+                <div className="butto">
 
+                <button type="submit">Enter</button>
+                </div>
+            </form>
             <div>
                 {
                     roll1.map((eachItem, i) => (
@@ -242,6 +245,7 @@ const Attendence = () => {
                                         {(eachItem.id === isEditing) ?
                                             <form onSubmit={updatePost}>
                                                 <input type="text"
+                                                min="13"
                                                     value={Section}
                                                     placeholder="Enter Your New Text"
                                                     onChange={(e) => {

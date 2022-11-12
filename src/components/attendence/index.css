@@ -1,7 +1,7 @@
 .main {
 border: 3px solid black;
 /* display: flex; */
-margin-top: 60px;
+margin-top: 30px;
 justify-content: center;
 width: 600px;
 padding: 10px;
@@ -54,9 +54,50 @@ margin-top: 20px;
     justify-content: center;
 }
 .buttonsGroup>.butt4{
-   margin: 5px;
-   padding: 7px;
-   border-radius: 10px;
-   
+    margin: 5px;
+    padding: 7px;
+    border-radius: 10px;
+    
+}
+.buttonsGroup>:hover{
+background-color: black;
+color: antiquewhite;
 
+
+}
+.Inp{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+.Inp>label{
+    margin-top: 10px;
+    margin-right:20px ;
+}
+.Inp>input{
+    padding: 10px;
+    width: 200px;
+border-radius: 20px;
+}
+.butto{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.butto>button{
+    padding: 10px 13px 10px 13px;
+    border-radius: 10px;
+border: 1px solid black;}
+.twoButt{
+    display: flex;
+    justify-content: space-between;
+}
+.twoButt> button{
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+.twoButt> button:hover{
+background-color: black;
+color: white;
 }

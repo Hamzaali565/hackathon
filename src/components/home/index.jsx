@@ -3,6 +3,7 @@ import { getFirestore, collection, addDoc, doc, onSnapshot } from "firebase/fire
 import { useState } from "react";
 import Form from 'react-bootstrap/Form';
 import axios from "axios";
+import './index.css'
 
 
 
@@ -43,7 +44,7 @@ const Home = () => {
 
     const formHandler = async (e) => {
         e.preventDefault();
-        
+
         const cloudinaryData = new FormData();
         cloudinaryData.append("file", pict);
         cloudinaryData.append("upload_preset", "postingApp");
@@ -58,142 +59,170 @@ const Home = () => {
             .then(async res => {
 
                 console.log("from then", res.data);
-            
-        
-        
-        
-        
-        try {
-            const docRef = await addDoc(collection(db, roll), {
-                name: name,
-                Father_Name: father,
-                Roll_No: roll,
-                Contact_No: contact,
-                CNIC: cnic,
-                Course_Name: course,
-                Lab: lab,
-                Class_Timming: timming,
-                Class_Schedule: schedule,
-                Teacher_Name: teacher,
-                Section_Name: section,
-                Batch_No: batch, 
-                pic: res?.data?.url
-            });
-            console.log("Document written with ID: ", docRef.id);
-        } catch (e) {
-            console.error("Error adding document: ", e);
-        }
-    })
+
+
+
+
+
+                try {
+                    const docRef = await addDoc(collection(db, roll), {
+                        name: name,
+                        Father_Name: father,
+                        Roll_No: roll,
+                        Contact_No: contact,
+                        CNIC: cnic,
+                        Course_Name: course,
+                        Lab: lab,
+                        Class_Timming: timming,
+                        Class_Schedule: schedule,
+                        Teacher_Name: teacher,
+                        Section_Name: section,
+                        Batch_No: batch,
+                        pic: res?.data?.url
+                    });
+                    console.log("Document written with ID: ", docRef.id);
+                    alert("Student Created Successfully")
+                } catch (e) {
+                    console.error("Error adding document: ", e);
+                    alert("Student not created ")
+                }
+            })
     }
 
 
     return (
-        <div>
-            <form onSubmit={formHandler}>
-                <Form.Label htmlFor="inputPassword5">Name</Form.Label>
-                <Form.Control
+        <div className="mainomain">
 
-                    type="name"
-                    onChange={(e) => { setName(e.target.value) }}
-                    id="inputPassword5"
-                    aria-describedby="passwordHelpBlock"
-                />
-                <Form.Label htmlFor="inputPassword5">Father Name</Form.Label>
-                <Form.Control
-                    type="Name"
-                    onChange={(e) => { setFather(e.target.value) }}
-                    id="inputPassword5"
-                    aria-describedby="passwordHelpBlock"
-                />
-                <Form.Label htmlFor="inputPassword5">Roll Number</Form.Label>
-                <Form.Control
-                    type="number"
-                    onChange={(e) => { setRoll(e.target.value) }}
-                    id="inputPassword5"
-                    aria-describedby="passwordHelpBlock"
-                />
-                <Form.Label htmlFor="inputPassword5">Contact Number</Form.Label>
-                <Form.Control
-                    type="number"
-                    id="inputPassword5"
-                    onChange={(e) => { setContact(e.target.value) }}
-                    aria-describedby="passwordHelpBlock"
-                />
-                <Form.Label htmlFor="inputPassword5">CNIC Number</Form.Label>
-                <Form.Control
-                    type="number"
-                    onChange={(e) => { setCnic(e.target.value) }}
-                    id="inputPassword5"
-                    aria-describedby="passwordHelpBlock"
-                />
-                <Form.Label htmlFor="inputPassword5">Course Name</Form.Label>
-                <Form.Control
+            <div className="main1">
+                <h1>Create Student</h1>
+                <form onSubmit={formHandler}>
+                    <div className="firstThree">
+                        <Form.Label htmlFor="inputPassword5">Name</Form.Label>
+                        <Form.Control
 
-                    id="inputPassword5"
-                    onChange={(e) => { setCourse(e.target.value) }}
-                    aria-describedby="passwordHelpBlock"
-                />
-                <Form.Label htmlFor="inputPassword5">Lab Number</Form.Label>
-                <Form.Control
+                            type="name"
+                            required
+                            onChange={(e) => { setName(e.target.value) }}
+                            id="inputPassword5"
+                            aria-describedby="passwordHelpBlock"
+                        />
+                        <Form.Label htmlFor="inputPassword5">Father Name</Form.Label>
+                        <Form.Control
+                            required
+                            type="Name"
+                            onChange={(e) => { setFather(e.target.value) }}
+                            id="inputPassword5"
+                            aria-describedby="passwordHelpBlock"
+                        />
+                        <Form.Label htmlFor="inputPassword5">Roll Number</Form.Label>
+                        <Form.Control
+                            required
+                            type="number"
+                            onChange={(e) => { setRoll(e.target.value) }}
+                            id="inputPassword5"
+                            aria-describedby="passwordHelpBlock"
+                        />
+                    </div>
+                    <div className="firstThree">
+                        <Form.Label htmlFor="inputPassword5">Contact Number</Form.Label>
+                        <Form.Control
+                            required
+                            type="number"
+                            id="inputPassword5"
+                            onChange={(e) => { setContact(e.target.value) }}
+                            aria-describedby="passwordHelpBlock"
+                        />
+                        <Form.Label htmlFor="inputPassword5">CNIC Number</Form.Label>
+                        <Form.Control
+                            type="number"
+                            required
+                            onChange={(e) => { setCnic(e.target.value) }}
+                            id="inputPassword5"
+                            aria-describedby="passwordHelpBlock"
+                        />
+                        <Form.Label htmlFor="inputPassword5">Course Name</Form.Label>
+                        <Form.Control
 
-                    id="inputPassword5"
-                    onChange={(e) => { setLab(e.target.value) }}
-                    aria-describedby="passwordHelpBlock"
-                />
-                <Form.Label htmlFor="inputPassword5">Class Timing</Form.Label>
-                <Form.Control
-                    // type="password"
-                    id="inputPassword5"
-                    onChange={(e) => { setTiming(e.target.value) }}
-                    aria-describedby="passwordHelpBlock"
-                />
-                <Form.Label htmlFor="inputPassword5">Class Schedule</Form.Label>
-                <Form.Control
-                    type="text"
-                    id="inputPassword5"
-                    onChange={(e) => { setSchedule(e.target.value) }}
-                    aria-describedby="passwordHelpBlock"
-                />
-                <Form.Label htmlFor="inputPassword5">Teacher's Name</Form.Label>
-                <Form.Control
-                    type="text"
-                    id="inputPassword5"
-                    onChange={(e) => { setTeacher(e.target.value) }}
-                    aria-describedby="passwordHelpBlock"
-                />
-                <Form.Label htmlFor="inputPassword5">Section Name</Form.Label>
-                <Form.Control
-                    type="text"
-                    onChange={(e) => { setSection(e.target.value) }}
-                    id="inputPassword5"
-                    aria-describedby="passwordHelpBlock"
-                />
+                            id="inputPassword5"
+                            required
+                            onChange={(e) => { setCourse(e.target.value) }}
+                            aria-describedby="passwordHelpBlock"
+                        />
+                    </div>
+                    <div className="firstThree">
+                        <Form.Label htmlFor="inputPassword5">Lab Number</Form.Label>
+                        <Form.Control
+                            required
+                            id="inputPassword5"
+                            onChange={(e) => { setLab(e.target.value) }}
+                            aria-describedby="passwordHelpBlock"
+                        />
+                        <Form.Label htmlFor="inputPassword5">Class Timing</Form.Label>
+                        <Form.Control
+                            // type="password"
+                            id="inputPassword5"
+                            required
+                            onChange={(e) => { setTiming(e.target.value) }}
+                            aria-describedby="passwordHelpBlock"
+                        />
+                        <Form.Label htmlFor="inputPassword5">Class Schedule</Form.Label>
+                        <Form.Control
+                            type="text"
+                            id="inputPassword5"
+                            required
+                            onChange={(e) => { setSchedule(e.target.value) }}
+                            aria-describedby="passwordHelpBlock"
+                        />
+                    </div>
+                    <div className="firstThree">
+                        <Form.Label htmlFor="inputPassword5">Teacher's Name</Form.Label>
+                        <Form.Control
+                            type="text"
+                            id="inputPassword5"
+                            required
+                            onChange={(e) => { setTeacher(e.target.value) }}
+                            aria-describedby="passwordHelpBlock"
+                        />
+                        <Form.Label htmlFor="inputPassword5">Section Name</Form.Label>
+                        <Form.Control
+                            type="text"
+                            required
+                            onChange={(e) => { setSection(e.target.value) }}
+                            id="inputPassword5"
+                            aria-describedby="passwordHelpBlock"
+                        />
 
-                <Form.Label htmlFor="inputPassword5">Batch Number</Form.Label>
-                <Form.Control
-                    type="text"
-                    onChange={(e) => { setBatch(e.target.value) }}
-                    id="inputPassword5"
-                    aria-describedby="passwordHelpBlock"
-                />
-                <Form.Label htmlFor="inputPassword5">Upload Photo</Form.Label>
-                <Form.Control
-                    type="file"
-                    onChange={(e) => {
-                        setPict(e.currentTarget.files[0])
-                    }} 
-                    id="inputPassword5"
-                    aria-describedby="passwordHelpBlock"
-                />
-                <button type="submit">submit</button>
+                        <Form.Label htmlFor="inputPassword5">Batch Number</Form.Label>
+                        <Form.Control
+                            required
+                            type="text"
+                            onChange={(e) => { setBatch(e.target.value) }}
+                            id="inputPassword5"
+                            aria-describedby="passwordHelpBlock"
+                        />
+                    </div>
+                    <div className="firstThree">
+                        <Form.Label htmlFor="inputPassword5">Upload Photo</Form.Label>
+                        <Form.Control
+                            type="file"
+                            required
+                            onChange={(e) => {
+                                setPict(e.currentTarget.files[0])
+                            }}
+                            id="inputPassword5"
+                            aria-describedby="passwordHelpBlock"
+                        />
+                    </div>
+                    <div className="buut">
+                        <button type="submit">submit</button>
+                    </div>
+                </form>
 
-            </form>
 
 
+            </div>
 
         </div>
-
-
 
     )
 
