@@ -1,21 +1,71 @@
-.nav{
+.nav {
   display: flex;
   justify-content: flex-end;
+  margin-right: 30px;
 }
-.nav>li{
+
+.nav>li {
   list-style: none;
   padding: 5px;
   border: 1px solid black;
   margin: 10px;
 }
-.nav>li>a{
+
+.nav>li>a {
   padding: 5px;
   text-decoration: none;
   color: black;
 }
-.nav>li:hover{
+
+.nav>li:hover {
   background-color: black;
-  
+
 }
-.nav>li>:hover{
-  color: white;}
+
+.nav>li>:hover {
+  color: white;
+}
+
+.img1 {
+  height: 40px;
+  background: none;
+  /* background-color: #61dafb; */
+  width: 40px;
+  /* border: 1px; */
+}
+
+.bott1{
+  border-radius: 20px;
+  padding: 5px;
+  /* border: 1px solid black; */
+  /* margin-left: 50px; */
+background: none;
+}
+.img1:hover{
+  cursor: pointer;
+}
+
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  /* border-bottom: 1px dotted black; */
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  /* width: 120px; */
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}

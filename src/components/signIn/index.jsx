@@ -1,60 +1,64 @@
-import App from "../../App"
-import { Route, Routes, Link, Navigate } from 'react-router-dom';
-import { useState } from "react";
-import Form from 'react-bootstrap/Form';
-import "./index.css"
-
-
-
+import { useState } from 'react';
+import './index.css'
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import Signup from '../signup';
+import { Placeholder } from 'react-bootstrap';
 
 const Signin = () => {
-    const [pass] = useState("admin")
+    const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const [check, setCheck] = useState(false)
-    // import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+    const [changer, setChanger] = useState(true)
+    const formSubmit = (e) => {
+        e.preventDefault();
 
+        const auth = getAuth();
+        signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                console.log("SignIn",userCredential);
+            })
+            .catch((error) => {
+                console.log("ERROR", error);
+                // const errorCode = error.code;
+                // const errorMessage = error.message;
+            });
 
-    const loginForm = (e) => {
-            e.preventDefault()
     }
 
 
     return (
-        <div className="main3">
-        <div className="main">
-            <h1 className="head22">Signin Form</h1>
-            <form onSubmit={loginForm}>
-                <div className="inp1">
-                    <Form.Label htmlFor="inputPassword5">Name</Form.Label>
-                    <Form.Control
+        <div>
+            <h1>This is Login page</h1>
+            <form onSubmit={formSubmit}>
 
-                        type="name"
-                        // onChange={(e) => { setName(e.target.value) }}
-                        id="inputPassword5"
-                        aria-describedby="passwordHelpBlock"
-                    />
+                <div>
+                    <span>E-mail</span>
+                    <span><input type="email"
+                        onChange={(e) => {
+                            setEmail(e.target.value)
+                        }}
+                        name="email" id="" 
+                        placeholder='admin@gmail.com'
+                        /></span></div>
+
+                <div>
+                    <span>Password</span>
+                    <span><input type="password"
+                        onChange={(e) => {
+                            setPassword(e.target.value)
+                        }}
+                        name="current-password" id="" 
+                        placeholder='admin1'/></span></div>
+                <div>
+                    <button type='submit'>Login</button>
                 </div>
-                <div className="inp1">
-                    <Form.Label className="inp2" htmlFor="inputPassword5">Password</Form.Label>
-                    <Form.Control
 
-                        type="name"
-                        placeholder="Password is admin"
-                        onChange={(e) => { setPassword(e.target.value) }}
-                        id="inputPassword5"
-                        place
-                        aria-describedby="passwordHelpBlock"
-                    />
-
-                </div>
-                <div className="inp1"><button type="Submit">Sign In</button></div>
+                                  
+            
             </form>
-            <p>Sign Inn Is Not Working kindly goto home from nav bar</p>
-
-
-
         </div>
-        </div>
+
+
+
 
 
     )

@@ -3,7 +3,7 @@ import { useState } from "react";
 import Form from 'react-bootstrap/Form';
 import {
     getFirestore, collection, addDoc, doc, onSnapshot, query
-    , deleteDoc, updateDoc
+    , deleteDoc, updateDoc, serverTimestamp, orderBy
 } from "firebase/firestore";
 import { useEffect } from 'react';
 import './index.css'
@@ -40,7 +40,9 @@ const Attendence = () => {
     const [Teacher, setTeacher] = useState("");
     const [Section, setSection] = useState("");
     const [Timing, setTiming] = useState("");
-    const [roll1, setRoll1] = useState([])
+    const [roll1, setRoll1] = useState([]);
+    const [present1, setPresent1] = useState("Present")
+    const [absent1, setAbsent1] = useState("Absent")
 
 
 
@@ -59,7 +61,7 @@ const Attendence = () => {
         let unsubscribe = null;
         // const getRealTimeData = async () => {
 
-        const q = query(collection(db, roll),);
+        const q = query(collection(db, roll), );
         unsubscribe = onSnapshot(q, (querySnapshot) => {
             const cities = [];
             querySnapshot.forEach((doc) => {
@@ -77,44 +79,45 @@ const Attendence = () => {
 
 
 
-        // try {
-        //     const docRef = await addDoc(collection(db, roll), {
-        //         name: name,
-        //         Father_Name: father,
-        //         Roll_No: roll,
-        //         Contact_No: contact,
-        //         CNIC: cnic,
-        //         Course_Name: course,
-        //         Lab: lab,
-        //         Class_Timming: timming,
-        //         Class_Schedule: schedule,
-        //         Teacher_Name: teacher,
-        //         Section_Name: section,
-        //         Batch_No: batch, 
-        //     });
-        //     console.log("Document written with ID: ", docRef.id);
-        // } catch (e) {
-        //     console.error("Error adding document: ", e);
-        // }
-
+    
 
     }
 
-    const PALL = (e) => {
-        e.preventDefault();
-    }
+    // const PALL = (e) => {
+    //     e.preventDefault();
+    // }
 
-    const present = () => {
-        alert("your presence has been added");
+    const present =  async (e) => {
+        // setPresent1('present')
+        // e.preventDefault();
+        try {
+            const docRef = await addDoc(collection(db, roll), {
+                Status: present1,
+                createdOn:serverTimestamp(),
+            });
+            console.log("Document written with ID: ", docRef.id);
+            alert("your presence has been added");
+        } catch (e) {
+            console.error("Error adding document: ", e);
+        }
+        
     }
-    const absent = () => {
-        let person = prompt("Password is admin",)
-        let password = "admin";
-        (person === password) ? alert('Absent Added')
-            :
-            alert("You Have no access to it");
-        ;
+    // console.log(present1);
+    const absent = async () => {
+        try {
+            const docRef = await addDoc(collection(db, roll), {
+                Status: absent1,
+                createdOn:serverTimestamp(),
+            });
+            console.log("Document written with ID: ", docRef.id);
+            alert("your presence has been added");
+        } catch (e) {
+            console.error("Error adding document: ", e);
+        }
+    
+    
     }
+    
     const late = () => {
         alert("your late attendence has been added");
     }
@@ -186,8 +189,8 @@ const Attendence = () => {
                             <div className="main">
                                 <div className="nameImage">
                                     <div className="Name">
-                                        <div><span><b>Name </b>:</span><span>{eachItem.name}</span></div>
-                                        <div><span><b>Father Name</b>:</span><span>{eachItem.Father_Name}</span></div>
+                                        <div><span><b>Name </b>:</span><span>{eachItem?.name}</span></div>
+                                        <div><span><b>Father Name</b>:</span><span>{eachItem?.Father_Name}</span></div>
 
                                     </div>
                                     <div><img height='150px' width='150px' src={eachItem.pic} alt="" /></div>
