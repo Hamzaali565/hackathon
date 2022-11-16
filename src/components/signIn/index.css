@@ -1,23 +1,70 @@
-.inp1{
+.email {
+    display: flex;
+    justify-content: center;
+}
+
+.label {
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+.iput>input {
+    padding: 20px;
+    width: 250px;
+    /* outline: none; */
+    border: 4px solid gray;
+    border-radius: 20px;
+}
+
+.email1 {
+    display: flex;
+    justify-content: center;
+}
+
+.label1 {
+
+    margin-top: 50px;
+    margin-right: 20px;
+}
+
+.iput1>input {
+    padding: 20px;
+    width: 250px;
+    /* outline: none; */
+    border: 4px solid gray;
+    border-radius: 20px;
+}
+
+.iput1 {
+    margin-right: 20px;
+    margin-top: 30px;
+}
+
+.log {
     display: flex;
     justify-content: center;
     margin-top: 30px;
 }
-.inp1>label{
-    margin-right: 30px;
-    margin-top: 5px;
+
+.log>button {
+    padding: 10px 20px 10px 20px;
+    border-radius: 20px;
 }
-.inp1>input{
-    padding: 10px;
-    border: 1px solid black;
-    border-radius: 10px;
-}
-.inp1>.inp2{
-    margin-right: 10px;
-}
-.main3>.main{
-    height: 500px;
-}
-.head22{
+
+.main2 {
+    border: 3px solid black;
+    /* display: flex; */
     margin-top: 100px;
+    justify-content: center;
+    width: 600px;
+    height: 400px;
+    padding: 10px;
+    box-shadow: 10px 1px 30px 10px #888888;
+    /* box-shadow: 5px 5px blue, 10px 10px red, 15px 15px green; */
+
+    margin-left: 350px;
+
+}
+.heading1{
+    margin-top: 40px;
 }

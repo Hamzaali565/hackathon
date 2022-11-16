@@ -26,13 +26,13 @@ const Signin = () => {
 
 
     return (
-        <div>
-            <h1>This is Login page</h1>
+        <div className='main2'>
+            <h1 className='heading1'> Login </h1>
             <form onSubmit={formSubmit}>
 
-                <div>
-                    <span>E-mail</span>
-                    <span><input type="email"
+                <div className='email'>
+                    <span className='label'>E-mail</span>
+                    <span className='iput'><input type="email"
                         onChange={(e) => {
                             setEmail(e.target.value)
                         }}
@@ -40,15 +40,15 @@ const Signin = () => {
                         placeholder='admin@gmail.com'
                         /></span></div>
 
-                <div>
-                    <span>Password</span>
-                    <span><input type="password"
+                <div  className='email1'>
+                    <span className='label1'>Password</span>
+                    <span className='iput1'><input type="password"
                         onChange={(e) => {
                             setPassword(e.target.value)
                         }}
                         name="current-password" id="" 
                         placeholder='admin1'/></span></div>
-                <div>
+                <div className='log'>
                     <button type='submit'>Login</button>
                 </div>
 

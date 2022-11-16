@@ -33,8 +33,8 @@ const Records = () => {
         e.preventDefault();
         let unsubscribe = null;
         // const getRealTimeData = async () => {
-            // 
-        const q = query(collection(db, roll) , orderBy("createdOn", "desc"));
+        // 
+        const q = query(collection(db, roll), orderBy("createdOn", "desc"));
         unsubscribe = onSnapshot(q, (querySnapshot) => {
             const cities = [];
             querySnapshot.forEach((doc) => {
@@ -56,22 +56,24 @@ const Records = () => {
             <h1>Previous Record Of Students</h1>
 
             <div>
-                <form onSubmit={recordsHandler}>
-                    <input type="number" name="" id=""
+                <form className="form1" onSubmit={recordsHandler}>
+                    <input type="number" name="" id="" className="iInn"
                         placeholder="enter your roll number ..."
                         onChange={(e) => { setRoll(e.target.value) }}
                     />
-
+                    <div>
+                        <button type="submit">Submit</button>
+                    </div>
                 </form>
-                <div>
+                <div className="cont0">
                     {
                         roll1.map((eachPost, i) => (
                             <div>
-                                
-                                
+
+
                                 <div className="cont">
-                                    <div><span>Date :</span>
-                                        <span>
+                                    <div><span><b>Date :</b></span>
+                                        <span className="date1">
                                             {
                                                 // (eachPost?.createdOn?.seconds === undefined) ? null
                                                 // :
@@ -83,9 +85,10 @@ const Records = () => {
                                             }</span>
 
                                     </div>
-                                    <div><span>Status :</span><span>{eachPost?.Status}</span></div>
+                                    <div><span><b>Status :</b></span>
+                                    <span className="status1">{eachPost?.Status}</span></div>
                                 </div>
-                            
+
                             </div>
                         ))
                     }

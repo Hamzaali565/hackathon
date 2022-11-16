@@ -69,3 +69,6 @@ background: none;
 .tooltip:hover .tooltiptext {
   visibility: visible;
 }
+.loginNav>li{
+list-style: none;
+}

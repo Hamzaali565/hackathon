@@ -71,11 +71,11 @@ function App() {
             <hr></hr>
           </div>
           :
-          // <ul className='loginNav'>
-          //     <li><Link to="/login">Login</Link></li>
-          //     <li><Link to="/signup">Signup</Link></li>
-          //     </ul>
-          null
+           <ul className='loginNav'>
+               <li><Link to="/login"></Link></li>
+               <li><Link to="/signup"></Link></li>
+               </ul>
+          
           }
       </div>
       {(login)
@@ -89,9 +89,9 @@ function App() {
         </Routes>
         :
         <Routes>
-          <Route path='/login' element={<Signin />} />
+          <Route path='login' element={<Signin />} />
           <Route path='signup' element={<Signup />} />
-          <Route path='/' element={<Navigate to="/login" replace={true} />} />
+          <Route path='*' element={<Navigate to="login" replace={true} />} />
         </Routes>
 
       }
