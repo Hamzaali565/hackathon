@@ -26,15 +26,15 @@ const db = getFirestore(app);
 
 const Records = () => {
     const [roll, setRoll] = useState("")
-    const [roll2, setRoll2] = useState([])
+    const [roll1, setRoll1] = useState([])
 
 
     const recordsHandler = (e) => {
         e.preventDefault();
         let unsubscribe = null;
         // const getRealTimeData = async () => {
-
-        const q = query(collection(db, roll),  orderBy("createdOn", "desc"));
+            // 
+        const q = query(collection(db, roll) , orderBy("createdOn", "desc"));
         unsubscribe = onSnapshot(q, (querySnapshot) => {
             const cities = [];
             querySnapshot.forEach((doc) => {
@@ -43,13 +43,13 @@ const Records = () => {
                 data.id = doc.id;
                 cities.push(data)
             });
-            setRoll2(cities)
+            setRoll1(cities)
             console.log("Current cities in CA: ", cities);
         });
 
 
     }
-    console.log(roll2);
+    // console.log(roll2);
 
     return (
         <div>
@@ -65,22 +65,27 @@ const Records = () => {
                 </form>
                 <div>
                     {
-                        roll2.map((eachPost, i) => (
+                        roll1.map((eachPost, i) => (
+                            <div>
+                                
+                                
+                                <div className="cont">
+                                    <div><span>Date :</span>
+                                        <span>
+                                            {
+                                                // (eachPost?.createdOn?.seconds === undefined) ? null
+                                                // :
 
-                            <div className="cont">
-                                <div><span>Date :</span>
-                                    <span>{(eachPost?.createdOn?.seconds === undefined) ? null
-                                        :
-                                      
-                                        moment(
-                                            (eachPost?.createdOn?.seconds) * 1000)
-                                            .format('Do MMMM, h:mm a ')
-                                        
-                                    }</span>
+                                                moment(
+                                                    (eachPost?.createdOn?.seconds) * 1000)
+                                                    .format('Do MMMM, h:mm a ')
 
+                                            }</span>
+
+                                    </div>
+                                    <div><span>Status :</span><span>{eachPost?.Status}</span></div>
                                 </div>
-                                <div><span>Status :</span><span>{eachPost?.Status}</span></div>
-
+                            
                             </div>
                         ))
                     }
